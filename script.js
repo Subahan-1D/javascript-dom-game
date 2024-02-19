@@ -22,12 +22,32 @@ function keyBoardEnterButtonPress(event) {
     console.log(PlayerPressed, expected);
 
     if(PlayerPressed === expected){
-        console.log('Your Win Point')
-        console.log('You have press correctly ',expected)
+        console.log('You Got A Point')
+        // update score
+        //1 . get the current score
+        const currentScoreElement = document.getElementById('current-score');
+        const currentScoreValueText = currentScoreElement.innerText;
+        const currentScore =parseInt(currentScoreValueText)
+        console.log(currentScore)
+        // 2 . increase the score by 1
+        const newScore = currentScore + 1;
+        // 3. show the update score 
+        currentScoreElement.innerText = newScore ;
+        // start a new round 
         removeBackgroundColorById(expected);
         continueGame();
     }else{
         console.log('Your Lost Point , and Lost life')
+
+        // 1. get the current life number 
+        const currentLifeElement = document.getElementById('current-life');
+        const currentLifeText = currentLifeElement.innerText;
+        const currentLife =parseInt(currentLifeText);
+        console.log(currentLife);
+        // 2 . reduce the life count 
+        const newLife = currentLife -1;
+        // 3 . display the updated life count 
+       currentLifeElement.innerText = newLife;
     }
 }
 // Capture keyboard key press
